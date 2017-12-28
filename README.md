@@ -10,7 +10,7 @@ Script para aplicação em Zabbix Server ou consulta individual em terminal linu
 Autor: Alex Santos (IFRN)
 Data:  27/12/2017
 ---
-This script makes an SNMP query to an OID with the mapping of trunk channels E1 or similar (acTrunkStatusChannels)
+This script makes an SNMP query to an OID that contains E1 (or similar) trunk mapping channels (acTrunkStatusChannels)
 of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
     - Channels in use
     - Blocked channels
