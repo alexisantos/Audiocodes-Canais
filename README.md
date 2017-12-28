@@ -29,11 +29,11 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
   ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
 
   Parâmetros:
-      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia"
-      -l: retorna a quantidade de canais livres (sem ocupação)"
-      -u: retorna quantidade de canais em uso (ocupado com voz)"
-      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)"
-      -t: exibe todas as informações acima"
+      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia
+      -l: retorna a quantidade de canais livres (sem ocupação)
+      -u: retorna quantidade de canais em uso (ocupado com voz)
+      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)
+      -t: exibe todas as informações acima
 
 Recomendação de discovery rule (Zabbix)
    UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
