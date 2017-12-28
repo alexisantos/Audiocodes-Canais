@@ -1,4 +1,4 @@
-Descrição:
+# Descrição:
 
 Este script faz uma consulta SNMP para uma OID com o mapeamento dos canais do tronco E1 (acTrunkStatusChannels)
 de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
