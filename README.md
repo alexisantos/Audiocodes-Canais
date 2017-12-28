@@ -1,5 +1,5 @@
 # Descrição:
-
+```
 Este script faz uma consulta SNMP para uma OID com o mapeamento dos canais do tronco E1 (acTrunkStatusChannels)
 de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
 canais em uso, canais bloqueados e canais livres.
@@ -31,3 +31,4 @@ Recomendação de discovery rule (Zabbix)
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
+```
