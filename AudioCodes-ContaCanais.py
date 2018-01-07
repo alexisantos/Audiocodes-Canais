@@ -8,7 +8,7 @@
 #    Script para aplicação em Zabbix Server ou consulta individual em terminal linux (necessário pacote SNMP)
 
 #    Autor: Alex Santos (IFRN)
-#    Data:  27/12/2017
+#    Data:  29/12/2017
 
 # De acordo com medições empíricas realizadas, existem dois padrões de exibição do uso dos canais no audiocodes:
 #   1 quando não existem canais sem bloqueio
@@ -18,14 +18,15 @@
 #   2: 81 88 88 88 88 33 38 38 81 83 83 83 33 83 38 38
 
 # Utilização
-#  ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
+#  ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco_index> <parâmetro>
 
 #  Parâmetros:
-#      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia"
-#      -l: retorna a quantidade de canais livres (sem ocupação)"
-#      -u: retorna quantidade de canais em uso (ocupado com voz)"
-#      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)"
-#      -t: exibe todas as informações acima"
+#      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia
+#      -l: retorna a quantidade de canais livres (sem ocupação)
+#      -u: retorna quantidade de canais em uso (ocupado com voz)
+#      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)
+#      -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)
+#      -t: exibe todas as informações acima
 
 # Recomendação de discovery rule (Zabbix)
 #   UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
@@ -33,6 +34,7 @@
 #   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
 #   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
 #   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
+#   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
 
 import sys
 import subprocess
@@ -42,12 +44,13 @@ if (len(sys.argv) < 5):
   print "------------------------------------------------------------"
   print "  Contagem de canais do Audiocodes mediant 1000 ou similar"
   print "------------------------------------------------------------"
-  print "  Utilização: " + str(sys.argv[0]) + " <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>"
+  print "  Utilização: " + str(sys.argv[0]) + " <host_dns/host_ip> <comunidadeSNMP> <num_tronco_index> <parâmetro>"
   print "  Parâmetros: "
   print "      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia"
   print "      -l: retorna a quantidade de canais livres (sem ocupação)"
   print "      -u: retorna quantidade de canais em uso (ocupado com voz)"
   print "      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)"
+  print "      -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)"
   print "      -t: exibe todas as informações acima"
   print subprocess.check_output("\n", shell=True)
   sys.exit()
@@ -87,18 +90,18 @@ else:                                     # O padrão é do tipo 1
 
 if sys.argv[4] == '-b':
    print bloqueio
-
 elif sys.argv[4] == '-l':
    print livres
-
 elif sys.argv[4] == '-u':
    print em_uso
-
+elif sys.argv[4] == '-o':
+	print em_uso + bloqueio
 elif sys.argv[4] == '-t':
-   print "Canais:    " + canais
-   print "Livres:    " + str(livres)
-   print "Em Uso:    " + str(em_uso)
-   print "Bloquados: " + str(bloqueio)
+   print "Canais:         " + canais
+   print "Livres:         " + str(livres)
+   print "Em Uso:         " + str(em_uso)
+   print "Bloqueados:     " + str(bloqueio)
+   print "Ocupados (u+b): " + str(em_uso + bloqueio)
 elif sys.argv[4] == '-c':   
    print canais
 else:     
