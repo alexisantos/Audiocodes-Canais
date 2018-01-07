@@ -41,13 +41,13 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
 **Exemplos de uso no shell do linux**
 ```
 # ./AudioCodes-ContaCanais.py 10.0.0.10 public 0 -t
-   Canais:         81 38 33 38 83 88 33 38 81 88 38 88 88 88 88 88
-   Livres:         9
+   Canais:         1333333313333333
+   Livres:         30
    Em Uso:         0
-   Bloqueados:     21
-   Ocupados (u+b): 21
+   Bloqueados:     0
+   Ocupados (u+b): 0
 ```
-_<num_tronco> será 0 caso só exista um tronco digital_
+_O parametro <num_tronco> será 0 caso só exista um tronco digital_
 
 **Recomendação de discovery rule (Zabbix)**
 
