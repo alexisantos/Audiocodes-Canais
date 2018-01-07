@@ -51,6 +51,8 @@ _<num_tronco> será 0 caso só exista um tronco digital_
 
 **Recomendação de discovery rule (Zabbix)**
 
+_Incluir linha de UserParameter no Zabbix-agent.conf do Zabbix Server_
+
 ```
  UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
 ```
@@ -61,8 +63,9 @@ _<num_tronco> será 0 caso só exista um tronco digital_
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
 ```
-Itens em descoberta SNMP
-![Zabbix-UserParameter](Zabbix-Prototypes-userparameter.PNG)
+Configurando descoberta SNMP
+![Zabbix-Discovery](Zabbix-DiscoveryTrunk.PNG)
+![Zabbix-Discovery-Prototypes](Zabbix-Prototypes-userparameter.PNG)
 
 Itens recebidos com a descoberta SNMP
 ![Zabbix-UserParameter](Zabbix-Values.PNG)
