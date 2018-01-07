@@ -27,7 +27,7 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
    
  **Utilização**
 ```
- ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
+ # ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
 ```
  **Parâmetros:**
 ```
