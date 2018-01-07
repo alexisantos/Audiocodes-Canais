@@ -1,11 +1,11 @@
 # Descrição:
 
-Este script faz uma consulta SNMP para uma OID com o mapeamento dos canais do tronco E1 (acTrunkStatusChannels)
-de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
+Este script faz uma consulta SNMP para uma OID (acTrunkStatusChannels) com o mapeamento dos canais
+do tronco E1 (TDM) de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
    * Canais em uso
    * Canais em bloqueio
    * Canais livres.
-   * Canais Ocupados
+   * Canais ocupados
    
 Script para aplicação em Zabbix Server ou consulta individual em terminal linux (necessário pacote SNMP)
 
@@ -18,7 +18,7 @@ of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
 
 Script for Zabbix Server application or individual query on linux terminal (SNMP package required)
 
-> Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br - Data:  29/12/2017
+> Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br - 29/12/2017
 
 -----
 De acordo com medições empíricas realizadas, existem dois padrões de exibição do uso dos canais no audiocodes:
