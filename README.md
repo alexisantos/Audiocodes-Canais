@@ -15,6 +15,7 @@ of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
 Script for Zabbix Server application or individual query on linux terminal (SNMP package required)
 
 > Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br
+
 > Data:  29/12/2017
 
 
