@@ -1,4 +1,5 @@
 # Descrição:
+
 ```
 Este script faz uma consulta SNMP para uma OID com o mapeamento dos canais do tronco E1 (acTrunkStatusChannels)
 de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
@@ -7,8 +8,8 @@ de Gateways AudioCodes Mediant 1000 e devolve parâmetros contábeis tais como:
    - Canais livres.
 Script para aplicação em Zabbix Server ou consulta individual em terminal linux (necessário pacote SNMP)
 
-Autor: Alex Santos (IFRN)
-Data:  27/12/2017
+Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br
+Data:  29/12/2017
 ---
 This script makes an SNMP query to an OID that contains E1 (or similar) trunk mapping channels (acTrunkStatusChannels)
 of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
@@ -33,6 +34,7 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
       -l: retorna a quantidade de canais livres (sem ocupação)
       -u: retorna quantidade de canais em uso (ocupado com voz)
       -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)
+      -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)
       -t: exibe todas as informações acima
 
 Recomendação de discovery rule (Zabbix)
@@ -41,4 +43,5 @@ Recomendação de discovery rule (Zabbix)
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
    E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
+   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
 ```
