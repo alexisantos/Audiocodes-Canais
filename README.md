@@ -14,11 +14,9 @@ of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
 * Free channels.
 Script for Zabbix Server application or individual query on linux terminal (SNMP package required)
 
-> Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br
+> Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br - Data:  29/12/2017
 
-> Data:  29/12/2017
-
-
+-----
 De acordo com medições empíricas realizadas, existem dois padrões de exibição do uso dos canais no audiocodes:
    1. quando não existem canais sem bloqueio
    2. quando há canais com bloqueio
@@ -40,13 +38,23 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
  -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)
  -t: exibe todas as informações acima
 ```
+**Exemplos de uso no shell do linux**
+```
+# ./AudioCodes-ContaCanais.py 10.0.0.10 public 0 -t
+   Canais:         81 38 33 38 83 88 33 38 81 88 38 88 88 88 88 88
+   Livres:         9
+   Em Uso:         0
+   Bloqueados:     21
+   Ocupados (u+b): 21
+```
+_<num_tronco> será 0 caso só exista um tronco digital_
 
 **Recomendação de discovery rule (Zabbix)**
 
 ```
  UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
 ```
-**Exemplos de uso:**
+**Exemplos de uso com Zabbix:**
 ```
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
