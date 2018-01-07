@@ -14,10 +14,9 @@ of AudioCodes Mediant 1000 Gateways and returns accounting parameters such as:
 * Free channels.
 Script for Zabbix Server application or individual query on linux terminal (SNMP package required)
 
-```
-Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br
-Data:  29/12/2017
-```
+> Autor: Alex Santos (IFRN) - alex.santos@ifrn.edu.br
+> Data:  29/12/2017
+
 
 De acordo com medições empíricas realizadas, existem dois padrões de exibição do uso dos canais no audiocodes:
    1. quando não existem canais sem bloqueio
@@ -29,27 +28,27 @@ De acordo com medições empíricas realizadas, existem dois padrões de exibiç
    
  **Utilização**
 ```
-  ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
+ ./AudioCodes-ContaCanais.py <host_dns/host_ip> <comunidadeSNMP> <num_tronco> <parâmetro>
 ```
  **Parâmetros:**
 ```
-      -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia
-      -l: retorna a quantidade de canais livres (sem ocupação)
-      -u: retorna quantidade de canais em uso (ocupado com voz)
-      -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)
-      -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)
-      -t: exibe todas as informações acima
+ -c: exibe o mapeamento dos canais no tronco E1, no formato que o equipamento envia
+ -l: retorna a quantidade de canais livres (sem ocupação)
+ -u: retorna quantidade de canais em uso (ocupado com voz)
+ -b: retorna quantidade de canais em bloqueio (ocupado com bloqueio de sinalização)
+ -o: retorna quantidade de canais ocupados (ocupado com voz e ocupados com bloqueio)
+ -t: exibe todas as informações acima
 ```
 
 **Recomendação de discovery rule (Zabbix)**
 
 ```
-   UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
+ UserParameter=E1.CanaisInfo[*], <caminho_do_script>./AudioCodes-ContaCanais.py $1 $2 $3 $4
 ```
 **Exemplos de uso:**
 ```
-   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
-   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
-   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
-   E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
+ E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-l]
+ E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-u]
+ E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
+ E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
 ```
