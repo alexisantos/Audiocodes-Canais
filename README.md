@@ -61,3 +61,9 @@ _<num_tronco> será 0 caso só exista um tronco digital_
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-b]
  E1.CanaisInfo[{HOST.DNS},{$SNMP_COMMUNITY},{#SNMPINDEX},-o]
 ```
+Itens em descoberta SNMP
+![Zabbix-UserParameter](Zabbix-Prototypes-userparameter.PNG)
+
+Itens recebidos com a descoberta SNMP
+![Zabbix-UserParameter](Zabbix-Values.PNG)
+_*Porcentagem pode ser calculada com itens calculados._
